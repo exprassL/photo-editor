@@ -150,6 +150,7 @@
     <i
       title="方形"
       @click="$emit('aspectratio:set', (square = !square) ? 1 : NaN)"
+      :class="{ active: square }"
       class="ri-xl ri-shape-2-line"
     ></i>
     <i
@@ -187,6 +188,11 @@
       :class="{ active: more }"
       @click="more = !more"
       class="ri-xl ri-tools-line"
+    ></i>
+    <i
+      title="对比"
+      class="ri-xl ri-contrast-drop-line"
+      @click="setContrast"
     ></i>
   </div>
   <div class="toolbar ruler" v-show="!cropStatus.cropping && more">
@@ -229,6 +235,7 @@ export default {
       square: false,
       more: false,
       span: 1,
+      contrast: false
     };
   },
   methods: {
@@ -241,6 +248,14 @@ export default {
         this.span = 1;
       }
     },
+    // 调整按钮图标背景，增加对比度
+    setContrast() {
+      this.contrast = !this.contrast
+      let bg = this.contrast ? 'rgb(245 241 241)' : '';
+      document.querySelectorAll('i').forEach((i) => {
+        i.style.background = bg;
+      });
+    }
   },
 };
 </script>
@@ -271,15 +286,10 @@ div.toolbar.middle {
 div.toolbar.middle i {
   line-height: 2em;
   pointer-events: none;
-  border-radius: 10%;
   pointer-events: auto;
 }
 div.toolbar.bottom {
   bottom: 0;
-}
-div.toolbar.top i,
-div.toolbar.bottom i {
-  line-height: normal;
 }
 div.toolbar i {
   cursor: pointer;
@@ -290,11 +300,11 @@ div.toolbar i.active {
   color: rgb(231, 76, 60);
 }
 div.toolbar.ruler {
-  position: fixed;
-  right: 1em;
   bottom: 3em;
 }
 i {
+  line-height: normal;
+  border-radius: 25%;
   -webkit-tap-highlight-color: transparent;
 }
 </style>
