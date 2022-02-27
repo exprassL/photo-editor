@@ -304,7 +304,7 @@ div.toolbar.ruler {
 }
 i {
   line-height: normal;
-  border-radius: 25%;
+  border-radius: 10px;
   -webkit-tap-highlight-color: transparent;
 }
 </style>
