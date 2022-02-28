@@ -19,8 +19,8 @@ export default {
   },
   data() {
     return {
-      // src: '', // /static/picture.jpg
-      src: "/static/picture.jpg",
+      src: '',
+      // src: "/static/picture.jpg",
       errorMsg: null,
     };
   },
