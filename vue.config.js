@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/photo-editor' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/photo-editor/dist' : '/',
 
     outputDir: 'dist',
 
