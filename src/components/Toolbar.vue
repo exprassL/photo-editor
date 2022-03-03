@@ -76,12 +76,12 @@
       <i
         title="轻微左旋"
         class="ri-xl ri-anticlockwise-2-line"
-        @click="$emit('rotate', span)"
+        @click="$emit('rotate', 0 - span)"
       ></i>
       <i
         title="轻微右旋"
         class="ri-xl ri-clockwise-2-line"
-        @click="$emit('rotate', 0 - span)"
+        @click="$emit('rotate', span)"
       ></i>
     </span>
     <span>
