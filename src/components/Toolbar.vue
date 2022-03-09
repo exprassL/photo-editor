@@ -21,6 +21,7 @@
       @click="$emit('export')"
       class="ri-xl ri-download-2-line"
     ></i>
+    <i title="上载" @click="$emit('upload')" class="ri-xl ri-upload-2-line"></i>
   </div>
   <!-- 工具栏，中间，微调时用，裁剪操作时隐藏 -->
   <div class="toolbar middle" v-show="!cropStatus.cropping && more">
@@ -222,6 +223,7 @@ export default {
     "clear",
     "preview",
     "export",
+    "upload",
     "drag:mode",
     "zoom",
     "rotate",
@@ -251,7 +253,7 @@ export default {
     // 调整按钮图标背景，增加对比度
     setContrast() {
       this.contrast = !this.contrast
-      let bg = this.contrast ? 'rgb(245 241 241)' : '';
+      let bg = this.contrast ? 'rgb(36 32 36)' : '';
       document.querySelectorAll('i').forEach((i) => {
         i.style.background = bg;
       });

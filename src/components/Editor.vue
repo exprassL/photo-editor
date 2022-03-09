@@ -20,6 +20,7 @@
     @clear="onClear"
     @preview="onPreview"
     @export="onExport"
+    @upload="onUpload"
     @drag:mode="onDragMode"
     @aspectratio:set="onAspectRatioSet"
     @zoom="onZoom"
@@ -50,6 +51,16 @@ export default {
   name: "Editor",
   props: {
     src: String,
+    apiUrl: String,
+    /*
+     * 裁剪方式：
+     * server - 服务端裁剪，上传起点位置、宽高、旋转、缩放等参数即可；
+     * js - 页面裁剪，上传裁剪好的图片本身（Blob）
+     */
+    cropType: {
+      type: String,
+      default: 'Server'
+    }
   },
   components: {
     Loading,
@@ -100,7 +111,7 @@ export default {
       if (this.cropper) {
         this.cropper.destroy();
       }
-      this.$parent.clear();
+      this.$parent.delete();
       // 到此，cropper 部分不被渲染，其中的预览也就不存在了，无需手动关闭
       // this.closePreview();
     },
@@ -137,6 +148,19 @@ export default {
       a.download = "cropped";
       a.href = dataUrl;
       a.click();
+    },
+    onUpload() {
+      console.log(this.cropType)
+      console.log(this.croppedData);
+      console.log(this.apiUrl)
+      if (this.apiUrl) {
+        console.log('可上传')
+        if (this.cropType.toLowerCase() == 'server') {
+          console.log('服务端裁剪');
+        } else {
+          console.log('页面裁剪');
+        }
+      }
     },
     onDragMode(mode) {
       this.cropper.setDragMode(mode);

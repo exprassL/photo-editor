@@ -1,11 +1,30 @@
 {
-  "name": "photo-editor",
+  "name": "@exp/photo-editor",
   "version": "0.1.0",
+  "description": "基于vue3和croper.js的图片编辑器",
+  "keywords": [
+    "image",
+    "photo",
+    "corpper",
+    "cropper-vue",
+    "crop",
+    "zoom",
+    "rotate",
+    "scale",
+    "move"
+  ],
+  "license": "MIT",
+  "repository": {},
   "private": true,
+  "main": "main.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "bundle": "vue-cli-service build --target lib --name PE ./src/App.vue"
   },
   "dependencies": {
     "cropperjs": "^1.5.12",

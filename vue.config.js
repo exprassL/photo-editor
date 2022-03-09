@@ -1,5 +1,6 @@
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/photo-editor/dist' : '/',
+    // publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+    publicPath: '/',
 
     outputDir: 'dist',
 
@@ -37,4 +38,7 @@ module.exports = {
 
     pwa: {},
 
+    css: {
+        extract: false
+    }
 };

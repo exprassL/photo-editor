@@ -6,12 +6,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="photo-editor/favicon.ico">
     <title>Photo Editor</title>
-    <script type="text/javascript">
-        window.location.href = 'dist/index.html';
-    </script>
 </head>
 
 <body>
+    <div id="app">
+    </div>
 </body>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="./PE.umd.js"></script>
+<script type="text/javascript">
+    const confs = {
+        registerData: {
+            src: 'photo-editor/cropperJs.jpg',
+        }
+    }
+    Vue.createApp(PE, confs).mount('#app')
+</script>
+
+<style type="text/css">
+    body {
+        margin: 0px;
+        background: #333;
+    }
+</style>
 
 </html>

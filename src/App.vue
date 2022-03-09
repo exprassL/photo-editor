@@ -5,7 +5,7 @@
     :errorMsg="errorMsg"
     @file:changed="onChange"
   />
-  <Editor v-else :src="src" />
+  <Editor v-else :src="src" :apiUrl="apiUrl" />
 </template>
 
 <script>
@@ -13,25 +13,29 @@ import Picker from "./components/Picker.vue";
 import Editor from "./components/Editor.vue";
 export default {
   name: "App",
+  props: ['registerData'],
   components: {
     Picker,
     Editor,
   },
   data() {
     return {
+      // 图片源
       src: '',
-      // src: "/static/picture.jpg",
+      // 图片保存接口地址
+      apiUrl: null,
+      // 裁剪方式： server, js
+      cropType: null,
       errorMsg: null,
     };
   },
   mounted() {
-    let src = window.location.search.substr(1);
-    if (src) {
-      this.src = src;
-    }
+    this.src = this.registerData.src;
+    this.apiUrl = this.registerData.apiUrl;
+    this.cropType = this.registerData.cropType;
   },
   methods: {
-    clear() {
+    delete() {
       this.src = null;
     },
     error(errorMsg) {
