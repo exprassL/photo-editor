@@ -2,6 +2,7 @@
   "name": "@exp/photo-editor",
   "version": "0.1.0",
   "description": "基于vue3和croper.js的图片编辑器",
+  "author": "exprassL",
   "keywords": [
     "image",
     "photo",
